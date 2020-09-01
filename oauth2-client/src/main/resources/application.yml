@@ -1,8 +1,7 @@
-spring:
-  security:
-    oauth2:
-      resource:
-        userInfoUri: http://localhost:8989/user
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8989/user
 
 server:
-  port: 8990
+  port: 8081
