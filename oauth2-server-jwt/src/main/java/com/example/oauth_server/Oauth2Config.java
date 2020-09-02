@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.token.DefaultToken;
 import org.springframework.security.core.token.TokenService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -31,6 +32,20 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private TokenStore tokenStore;
+//
+//
+//    @Autowired
+//    private DefaultTokenServices defaultTokenServices;
+
+    @Autowired
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+
+//    @Autowired
+//    private TokenEnhancer jwtTokenEnhancer;
+
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
@@ -42,8 +57,12 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+//        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+//        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtTokenEnhancer, jwtAccessTokenConverter));
         endpoints
                 .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore)
+                .accessTokenConverter(jwtAccessTokenConverter)
                 .userDetailsService(userDetailsService);
     }
 }
