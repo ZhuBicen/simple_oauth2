@@ -36,7 +36,8 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()
                 .withClient("eagleeye")
                 .secret("{noop}thisissecret")
-                .authorizedGrantTypes("refresh_token", "password", "client_credentials")
+                .authorizedGrantTypes("refresh_token", "password", "client_credentials", "authorization_code")
+                .redirectUris("http://localhost:9090/callback")
                 .scopes("webclient", "mobileclient");
     }
 
