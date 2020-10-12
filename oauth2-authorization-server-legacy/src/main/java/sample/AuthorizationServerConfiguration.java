@@ -96,10 +96,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		// @formatter:off
 		clients.inMemory()
 			.withClient("reader")
-				.authorizedGrantTypes("password")
+				.authorizedGrantTypes("password", "authorization_code")
 				.secret("{noop}secret")
 				.scopes("message:read")
 				.accessTokenValiditySeconds(600_000_000)
+				.redirectUris("http://localhost:9090")
 				.and()
 			.withClient("writer")
 				.authorizedGrantTypes("password")
@@ -164,7 +165,7 @@ class UserConfig extends WebSecurityConfigurerAdapter {
 				.mvcMatchers("/.well-known/jwks.json").permitAll()
 				.anyRequest().authenticated()
 				.and()
-			.httpBasic()
+			.formLogin()
 				.and()
 			.csrf().ignoringRequestMatchers(request -> "/introspect".equals(request.getRequestURI()));
 	}
