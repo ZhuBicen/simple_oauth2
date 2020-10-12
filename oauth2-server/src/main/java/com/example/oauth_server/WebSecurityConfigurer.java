@@ -34,16 +34,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().permitAll();
-        // http.authorizeRequests().antMatchers("/**").permitAll();
-        // http.requestMatchers().antMatchers("/**").permitAll();
-//        http.requestMatchers()
-//                .antMatchers("/**", "/login", "/oauth/authorize")
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().permitAll();
+        http.authorizeRequests().antMatchers("/**").permitAll();
     }
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
