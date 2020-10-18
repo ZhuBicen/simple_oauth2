@@ -62,16 +62,4 @@ public class AuthorizationServerConfig {
 	public KeyManager keyManager() {
 		return new StaticKeyGeneratingKeyManager();
 	}
-
-	// @formatter:off
-	@Bean
-	public UserDetailsService users() {
-		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user1")
-				.password("password")
-				.roles("USER")
-				.build();
-		return new InMemoryUserDetailsManager(user);
-	}
-	// @formatter:on
 }
