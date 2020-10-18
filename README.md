@@ -1,0 +1,2 @@
+Samples from Spring Security: https://github.com/spring-projects/spring-security/tree/5.2.5.RELEASE/samples/boot
+Samples from Spring Authorization Server: https://github.com/spring-projects-experimental/spring-authorization-server/tree/master/samples/boot/oauth2-integration
