@@ -2,6 +2,7 @@ package com.example.oauth_server;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 @Configuration
+@Order(1)
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
@@ -32,17 +34,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("admin").password("{noop}password").roles("USER", "ADMIN");
     }
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/**").permitAll();
-    }
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .anyRequest().authenticated() //所有请求都需要通过认证
-//                .and()
-//                .httpBasic() //Basic登录
-//                .and()
-//                .csrf().disable(); //关跨域保护
+//        http.authorizeRequests().antMatchers("/**").permitAll();
 //    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .anyRequest().authenticated() //所有请求都需要通过认证
+                .and().formLogin().permitAll();
+    }
 }
