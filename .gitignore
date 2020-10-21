@@ -1,2 +1,3 @@
 oauth2-authorization-server-legacy/.gradle/
 *.class
+oauth2-authorization-server-legacy/.idea/
