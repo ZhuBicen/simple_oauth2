@@ -1,0 +1,18 @@
+server:
+  port: 8083
+  servlet.context-path: /auth
+user.oauth:
+  clientId: R2dpxQ3vPrtfgF72
+  clientSecret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
+  redirectUris: http://localhost:8082/login/oauth2/code/
+  user.username: Andrew
+  user.password: abcd
+
+logging:
+  level:
+    root: INFO
+    com.scg.service: TRACE
+    org.springframework.web: INFO
+    org.springframework.web.HttpLogging: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
