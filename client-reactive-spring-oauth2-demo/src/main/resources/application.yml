@@ -1,0 +1,22 @@
+
+server:
+  port: 8090
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 1414ffdd794728a2664c
+            clientSecret: 14e7540cc6ad6939aa28ec2bd2a0afd8da53f317
+
+
+logging:
+  level:
+    root: INFO
+    com.scg.service: TRACE
+    org.springframework.web: INFO
+    org.springframework.web.HttpLogging: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
